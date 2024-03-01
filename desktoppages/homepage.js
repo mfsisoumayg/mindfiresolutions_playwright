@@ -1,8 +1,14 @@
 const {expect} = require("@playwright/test")
+import HomePageRes from '../resources/homepageres'
+class HomePage{
+    #url = "https://www.mindfiresolutions.com";
 
-class HomePage {
+    /**
+    * @param {import('@playwright/test').Page} page
+    */
     constructor(page) {
         this.page = page;
+        this.homePageRes = new HomePageRes();
         this.brandImg = ".branding";
         this.navMenu = "//div[@class='navigation']/ul/li/a/span";
         this.nestedSubMenu = "//div[@class='navigation']/ul/li[{0}]/ul/li/a";
@@ -10,18 +16,21 @@ class HomePage {
         this.searchButtonMenuHeader = "//div[@id='search_menu']//div[@class='mobile-menu-header']/div";
     }
 
-    // get a dynamic list
+    async goTo() {
+        await this.page.goto(this.#url);
+    }
+
+    async checkUrl() {
+        await expect(this.page).toHaveURL(this.#url);
+    }
 
     async validateBrandIcon() {
         await expect(this.page.locator(this.brandImg)).toBeVisible();
     }
 
-    /**
-     * @param {{}}} headersTextList
-     */
-    async validateNavMenu(headersTextList) {
+    async validateNavMenu() {
         // assert the total count of nav-menu
-        const keys = Object.keys(headersTextList);
+        const keys = Object.keys(this.homePageRes.headersTextList);
         await expect(this.page.locator(this.navMenu)).toHaveCount(keys.length);
         console.log("count of nav-menu on headers: ", keys.length);
 
@@ -32,14 +41,11 @@ class HomePage {
         }
     }
 
-    /**
-     * @param {{}}} headersTextList
-     */
     async validateSubMenu() {
         const headersLoc = await this.page.locator(this.navMenu).all();
         for (let i = 0; i < headersLoc.length; i++) {
-            await headersLoc[i].click();
-        } 
+            await headersLoc[0].click();
+        }
         const headersLoc1 = await this.page.locator("//div[@class='navigation']/ul/li[1]/ul/li/a").all();
         console.log(headersLoc);
         
@@ -61,7 +67,7 @@ class HomePage {
      */
     async searchWithKeyword(searchText) {
         await _validateSearchIcon();
-        await this.page.locator(this.searchButton).click();
+        await super.page.locator(this.searchButton).click();
 
     }
 
@@ -71,4 +77,4 @@ class HomePage {
 
 }
 
-module.exports = HomePage;
+export default HomePage;

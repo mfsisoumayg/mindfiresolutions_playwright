@@ -1,6 +1,5 @@
 class HomePageRes {
     constructor() {
-        this.headerListTest = ['About Us', 'Services', 'Industries', 'Knowledge', 'Portfolio', 'People', 'Contact Us'];
         this.headersTextList = {
             "About Us" : [
                 {
@@ -42,4 +41,4 @@ class HomePageRes {
     }
 }
 
-module.exports = HomePageRes;
+export default HomePageRes;
