@@ -31,7 +31,6 @@ test.describe('home page functionality', () => {
   
     await homePage.goTo();
 
-    page.close();
   });
 
   test('footers', async ({ page }) => {

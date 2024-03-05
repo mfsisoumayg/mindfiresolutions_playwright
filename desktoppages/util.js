@@ -9,16 +9,21 @@ class Util {
     constructor(page) {
         this.page = page;
         this.locBrandImg = this.page.getByRole('link', { name: 'Mindfire Solutions' });
+
         this.locConnectBtn = this.page.getByRole('link', { name: 'Connect With Us' });
+
         this.locNavMenuHomePage = this.page.locator("//div[@class='navigation']/ul/li/a/span");
         this.locNavMenuXPage = this.page.locator("//div[@class='navigation page-navigation']/nav/ul/li/a/div/span[@class='menu-item-title']");
         this.navSubMenuHomePage = "//div[@class='navigation']/ul/li[{n}]/ul/li/a/span"; // replace {n}
         this.navSubMenuXPage = "//div[@class='navigation page-navigation']/nav/ul/li[{n}]/ul/li"; // replace {n}
+
         this.locSearchBtn = this.page.locator(".fa-search").first();
         this.locSearchMenuBrandImg = this.page.locator(".mobile-menu-logo").nth(1);
         this.locSearchMenuClose = this.page.locator("#search_menu i");
         this.locSearchBar = this.page.getByPlaceholder('Enter search keyword…').last();
         this.locSearchEnterBtn = this.page.getByRole('button', { class: 'search-submit' }).last();
+
+        this.locFtPrivacyPolicy = this.page.locator();
     }
 
     async validateBrandIcon() {
