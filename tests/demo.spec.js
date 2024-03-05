@@ -4,3 +4,13 @@ await page.getByRole('banner').locator('li').filter({ hasText: 'Knowledge' }).cl
 await page.getByText('Portfolio Case Studies Projects Success Stories Infographics Client Testimonial').click();
 await page.getByRole('banner').getByText('People Culture Career People').click();
 await page.getByRole('banner').locator('li').filter({ hasText: 'Contact Us' }).click();
+await page.goto('https://www.mindfiresolutions.com/');
+await page.locator('.fa').first().click();
+await page.locator('#search_menu i').click();
+await page.locator('.fa').first().click();
+await page.getByPlaceholder('Enter search keyword…').click();
+await page.getByPlaceholder('Enter search keyword…').fill('hello');
+await page.getByPlaceholder('Enter search keyword…').press('Enter');
+await page.getByRole('button', { name: ' Search' }).click();
+await page.getByRole('link', { name: '' }).click();
+await page.getByRole('button', { name: ' Search' }).click();

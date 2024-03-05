@@ -14,8 +14,11 @@ class Util {
         this.locNavMenuXPage = this.page.locator("//div[@class='navigation page-navigation']/nav/ul/li/a/div/span[@class='menu-item-title']");
         this.navSubMenuHomePage = "//div[@class='navigation']/ul/li[{n}]/ul/li/a/span"; // replace {n}
         this.navSubMenuXPage = "//div[@class='navigation page-navigation']/nav/ul/li[{n}]/ul/li"; // replace {n}
-        this.locSearchBtn = this.page.locator("//i[@class='fa fa-search']");
-        this.searchMenuHeader = this.page.locator("//div[@id='search_menu']//div[@class='mobile-menu-header']/div");
+        this.locSearchBtn = this.page.locator(".fa-search").first();
+        this.locSearchMenuBrandImg = this.page.locator(".mobile-menu-logo").nth(1);
+        this.locSearchMenuClose = this.page.locator("#search_menu i");
+        this.locSearchBar = this.page.getByPlaceholder('Enter search keyword…').last();
+        this.locSearchEnterBtn = this.page.getByRole('button', { class: 'search-submit' }).last();
     }
 
     async validateBrandIcon() {
@@ -85,10 +88,13 @@ class Util {
         await expect(this.locSearchBtn).toBeVisible();
     }
 
-    async validateSearchIconClick() {
+    async validateSearchMenu() {
         await this._validateSearchIcon();
         await this.locSearchBtn.click();
-        await expect(this.searchMenuHeader).toHaveCount(2);
+        await this.locSearchMenuBrandImg.isVisible();
+        await this.locSearchMenuClose.isEnabled();
+        await this.locSearchBar.isVisible();
+        await this.locSearchEnterBtn.isVisible();
     }
 
     /**
@@ -97,8 +103,8 @@ class Util {
     async searchWithKeyword(searchText) {
         await this._validateSearchIcon();
         await this.locSearchBtn.click();
-        await this.page.getByRole('searchbox').fill(searchText);
-        await this.page.getByRole('button', { type: 'submit' }).click();
+        await this.locSearchBar.fill(searchText);
+        await this.locSearchEnterBtn.click();
     }
 
     /**
