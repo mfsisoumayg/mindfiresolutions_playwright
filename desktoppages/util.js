@@ -24,7 +24,7 @@ class Util {
         this.locSearchBar = this.page.getByPlaceholder('Enter search keyword…').last();
         this.locSearchEnterBtn = this.page.getByRole('button', { class: 'search-submit' }).last();
 
-        this.locFtPrivacyPolicy = this.page.locator('.heading a').filter({ hasText: privacyPolicy.label });
+        this.locFtPrivacyPolicy = this.page.getByRole('link', { name: privacyPolicy.label })
     }
 
     async validateBrandIcon() {

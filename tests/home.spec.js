@@ -30,7 +30,6 @@ test.describe('home page functionality', () => {
     await home.util.validateBannerConnectWithUs(true);
     await contactUs.validateUrl();
 
-    await contactUs.util.validatePrivacyPolicy();
 
     await contactUs.util.goToHomePage();
 
@@ -50,7 +49,10 @@ test.describe('home page functionality', () => {
   
     await homePage.goTo();
 
+    await homePage.util.validatePrivacyPolicy();
     await homePage.util.validateSocialMedia();
+
+    page.close();
 
   });
 
