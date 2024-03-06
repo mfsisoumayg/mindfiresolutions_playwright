@@ -30,6 +30,8 @@ test.describe('home page functionality', () => {
     await home.util.validateBannerConnectWithUs(true);
     await contactUs.validateUrl();
 
+    await contactUs.util.validatePrivacyPolicy();
+
     await contactUs.util.goToHomePage();
 
   });

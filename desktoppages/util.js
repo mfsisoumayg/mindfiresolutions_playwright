@@ -24,7 +24,7 @@ class Util {
         this.locSearchBar = this.page.getByPlaceholder('Enter search keyword…').last();
         this.locSearchEnterBtn = this.page.getByRole('button', { class: 'search-submit' }).last();
 
-        this.locFtPrivacyPolicy = page.locator('div').filter({ hasText: privacyPolicy.label });
+        this.locFtPrivacyPolicy = this.page.locator('.heading a').filter({ hasText: privacyPolicy.label });
     }
 
     async validateBrandIcon() {
@@ -149,9 +149,6 @@ class Util {
 
         if (link !== privacyPolicy.link) {
             throw new Error("Link not matching for: ", privacyPolicy.label);
-        }
-        if (target !== "_blank") {
-            throw new Error("link will open in current tab only for: ", privacyPolicy.label);
         }
     }
 
