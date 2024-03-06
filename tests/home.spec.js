@@ -1,6 +1,8 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
-import HomePage from "../desktoppages/homepage";
+import HomePage from "../desktoppages/home_page";
+import ContactUsPage from "../desktoppages/contactus_page";
+
 
 test.describe('home page functionality', () => {
 
@@ -19,18 +21,26 @@ test.describe('home page functionality', () => {
   });
 
   test('banners', async ({ page }) => {
-    const homePage = new HomePage(page);
+    const home = new HomePage(page);
+    const contactUs = new ContactUsPage(page);
   
-    await homePage.goTo();
+    await home.goTo();
 
-    await homePage.util.validateBannerConnectWithUs(false);
+    // validate contact us link navigation to specified url
+    await home.util.validateBannerConnectWithUs(true);
+    await contactUs.validateUrl();
+
+    await contactUs.util.goToHomePage();
+
   });
 
   test('footer top', async ({ page }) => {
     const homePage = new HomePage(page);
-  
+
     await homePage.goTo();
 
+    await homePage.validateFooterTop();
+    
   });
 
   test('footers', async ({ page }) => {
@@ -38,7 +48,8 @@ test.describe('home page functionality', () => {
   
     await homePage.goTo();
 
-    page.close();
+    await homePage.util.validateSocialMedia();
+
   });
 
 })

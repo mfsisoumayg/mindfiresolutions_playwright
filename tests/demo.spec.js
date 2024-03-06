@@ -18,3 +18,53 @@ await page.getByPlaceholder('Enter search keyword…').press('Enter');
 await page.getByRole('button', { name: ' Search' }).click();
 await page.getByRole('link', { name: '' }).click();
 await page.getByRole('button', { name: ' Search' }).click();
+
+await page.goto('https://www.mindfiresolutions.com/');
+await page.getByPlaceholder('Full Name').click();
+await page.getByPlaceholder('Phone').click();
+await page.getByPlaceholder('Email').click();
+await page.getByPlaceholder('Subject').click();
+await page.getByPlaceholder('Your Message').click();
+await page.getByRole('button', { name: 'Submit' }).click();
+await page.getByRole('heading', { name: 'Get in Touch with Us' }).click();
+await page.getByRole('link', { name: 'GoodFirms' }).click();
+await page.getByRole('link', { name: 'Clutch' }).click();
+
+await page.getByRole('link', { name: 'Clutch' }).click();
+await page.locator('#post-6719 div').filter({ hasText: 'Contact Sales US East Coast' }).nth(2).click();
+await page.getByRole('heading', { name: 'US East Coast: +1' }).click();
+await page.getByRole('heading', { name: 'US West Coast: +1' }).click();
+await page.locator('#tm-box-icon-65e78eef67be6 > .content-wrap > .content-inner > .content').click();
+await page.locator('#tm-box-icon-65e78eef6864f').click();
+await page.getByText('C/o. ETHEREA, 24th -26th').click();
+await page.getByText('C/O - Awfis Space Solutions').click();
+await page.getByText('Mindfire LLC 1890 Crooks,').click();
+await page.goto('https://www.mindfiresolutions.com/contact-us/');
+await page.getByRole('combobox', { name: 'India (भारत): +' }).click();
+await page.locator('#iti-0__item-us').click();
+
+await page.goto('https://www.mindfiresolutions.com/contact-us/');
+await page.locator('#tm-row-65e78eef69d99').click();
+await page.locator('div').filter({ hasText: "Privacy Policy" }).click();
+await page.getByText('© 2023 Mindfire Solutions.').click();
+await page.getByLabel('Instagram').click({
+    button: 'right'
+  });
+await page.locator('#tm-row-65e78eef69d99').click();
+const page1Promise = page.waitForEvent('popup');
+  await page.getByLabel('Instagram').click();
+  const page1 = await page1Promise;
+const page2Promise = page.waitForEvent('popup');
+  await page.getByLabel('Twitter').click();
+  const page2 = await page2Promise;
+const page3Promise = page.waitForEvent('popup');
+  await page.getByLabel('Facebook').click();
+  const page3 = await page3Promise;
+const page4Promise = page.waitForEvent('popup');
+  await page.getByLabel('LinkedIn').click();
+  const page4 = await page4Promise;
+const page5Promise = page.waitForEvent('popup');
+  await page.getByLabel('Blog').click();
+  const page5 = await page5Promise;const page5Promise = page.waitForEvent('popup');
+  await page.getByLabel('Blog').click();
+  const page5 = await page5Promise;

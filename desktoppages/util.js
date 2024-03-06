@@ -1,5 +1,6 @@
 const { expect } = require("@playwright/test");
 import { navMenuDict } from '../resources/headersres';
+import { socialLinks, privacyPolicy } from "../resources/footersres";
 
 class Util {
 
@@ -23,7 +24,7 @@ class Util {
         this.locSearchBar = this.page.getByPlaceholder('Enter search keyword…').last();
         this.locSearchEnterBtn = this.page.getByRole('button', { class: 'search-submit' }).last();
 
-        this.locFtPrivacyPolicy = this.page.locator();
+        this.locFtPrivacyPolicy = page.locator('div').filter({ hasText: privacyPolicy.label });
     }
 
     async validateBrandIcon() {
@@ -121,6 +122,39 @@ class Util {
             await this.locConnectBtn.click();
         }
     }
+
+    async goToHomePage() {
+        await this.locBrandImg.click();
+    }
+
+    async validateSocialMedia(){
+        for (let key of Object.entries(socialLinks)) {
+            key = key[1];
+            const link = await this.page.getByLabel(key['label']).getAttribute("href");
+            const target = await this.page.getByLabel(key['label']).getAttribute("target")
+            if (link !== key['link']) {
+                throw new Error("Link not matching for: ", key['label']);
+            }
+            if (target !== "_blank") {
+                throw new Error("Social link will open in current tab only for: ", key['label']);
+            }
+        }
+    } 
+
+    async validatePrivacyPolicy(){
+        await expect(this.locFtPrivacyPolicy).toBeVisible();
+
+        const link = await this.locFtPrivacyPolicy.getAttribute("href");
+        const target = await this.locFtPrivacyPolicy.getAttribute("target")
+
+        if (link !== privacyPolicy.link) {
+            throw new Error("Link not matching for: ", privacyPolicy.label);
+        }
+        if (target !== "_blank") {
+            throw new Error("link will open in current tab only for: ", privacyPolicy.label);
+        }
+    }
+
 
 }
 
