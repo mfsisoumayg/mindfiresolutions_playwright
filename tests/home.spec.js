@@ -14,7 +14,7 @@ test.describe('home page functionality', () => {
     await homePage.util.validateBrandIcon();
 
     await homePage.validateNavMenu();
-    await homePage.validateSubMenu();
+    await homePage.validateNavSubMenu();
 
     await homePage.util.validateSearchMenu();
   

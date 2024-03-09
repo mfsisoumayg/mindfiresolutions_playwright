@@ -26,7 +26,7 @@ class HomePage{
         await this.util.validateNavMenu("homePage");
     }
 
-    async validateSubMenu() {
+    async validateNavSubMenu() {
         await this.util.validateNavSubMenu("homePage");
     }
 

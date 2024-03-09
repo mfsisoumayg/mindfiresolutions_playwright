@@ -30,12 +30,7 @@ await page.getByRole('heading', { name: 'Get in Touch with Us' }).click();
 await page.getByRole('link', { name: 'GoodFirms' }).click();
 await page.getByRole('link', { name: 'Clutch' }).click();
 
-await page.getByRole('link', { name: 'Clutch' }).click();
-await page.locator('#post-6719 div').filter({ hasText: 'Contact Sales US East Coast' }).nth(2).click();
 await page.getByRole('heading', { name: 'US East Coast: +1' }).click();
-await page.getByRole('heading', { name: 'US West Coast: +1' }).click();
-await page.locator('#tm-box-icon-65e78eef67be6 > .content-wrap > .content-inner > .content').click();
-await page.locator('#tm-box-icon-65e78eef6864f').click();
 await page.getByText('C/o. ETHEREA, 24th -26th').click();
 await page.getByText('C/O - Awfis Space Solutions').click();
 await page.getByText('Mindfire LLC 1890 Crooks,').click();
