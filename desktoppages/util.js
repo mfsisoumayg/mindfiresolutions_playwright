@@ -11,7 +11,7 @@ class Util {
         this.page = page;
         this.locBrandImg = this.page.getByRole('link', { name: 'Mindfire Solutions' });
 
-        this.locConnectBtn = this.page.getByRole('link', { name: 'Connect With Us' });
+        this.locConnectBtn = this.page.getByRole('link', { name: 'Connect With Us' || 'Connect with Us'});
 
         this.locNavMenuHomePage = this.page.locator("//div[@class='navigation']/ul/li/a/span");
         this.locNavMenuXPage = this.page.locator("//div[@class='navigation page-navigation']/nav/ul/li/a/div/span[@class='menu-item-title']");
