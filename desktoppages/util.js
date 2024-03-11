@@ -17,7 +17,8 @@ class Util {
         this.locNavMenuXPage = this.page.locator("//div[@class='navigation page-navigation']/nav/ul/li/a/div/span[@class='menu-item-title']");
         this.navSubMenuHomePage = "//div[@class='navigation']/ul/li[{n}]/ul/li/a/span"; // replace {n}
         this.navSubMenuXPage = "//div[@class='navigation page-navigation']/nav/ul/li[{n}]/ul/li/a//span[@class='menu-item-title']"; // replace {n}
-
+        this.navNestMenuHomePage = "//div[@class='navigation']/ul/li[{0}]/ul/li[{1}]/ul/li/a/span" // replace {0} and {1}
+        this.navNestMenuXPage = "//div[@class='navigation page-navigation']/nav/ul/li[{0}]/ul/li[{1}]/ul/li/a//span[@class='menu-item-title']" // replace {0} and {1}
         this.locSearchBtn = this.page.locator(".fa-search").first();
         this.locSearchMenuBrandImg = this.page.locator(".mobile-menu-logo").nth(1);
         this.locSearchBar = this.page.getByPlaceholder('Enter search keyword…').last();
@@ -148,6 +149,12 @@ class Util {
         if (link !== privacyPolicy.link) {
             throw new Error("Link not matching for: ", privacyPolicy.label);
         }
+    }
+
+
+
+    async navigateThroughNavMenu() {
+
     }
 
 
