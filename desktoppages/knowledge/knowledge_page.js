@@ -1,7 +1,7 @@
 const { expect } = require("@playwright/test")
-import Util from './util';
-import { knowledgeUrl } from "../resources/links";
-import { textArticles } from '../resources/knowledgepageres';
+import Util from '../util';
+import { knowledgeUrl } from "../../resources/links";
+import { textArticles } from '../../resources/knowledgepageres';
 
 class KnowledgePage {
     /**
@@ -48,7 +48,7 @@ class KnowledgePage {
     * @param {string} linkText
     */
     async clickOnArticle(linkText) {
-        await this.page.getByText(linkText).click();
+        await this.page.getByRole('link', { name: linkText }).click();
     }
 }
 

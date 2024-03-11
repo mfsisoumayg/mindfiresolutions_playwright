@@ -1,6 +1,6 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
-import KnowledgePage from "../desktoppages/knowledge_page";
+import KnowledgePage from "../desktoppages/knowledge/knowledge_page";
 import { textArticles } from '../resources/knowledgepageres';
 
 test.describe('knowledge page functionality', () => {
