@@ -11,7 +11,7 @@ class Util {
         this.page = page;
         this.locBrandImg = this.page.getByRole('link', { name: 'Mindfire Solutions' });
 
-        this.locConnectBtn = this.page.getByRole('link', { name: 'Connect With Us' || 'Connect with Us'});
+        this.locConnectBtn = this.page.getByRole('link', { name: 'Connect With Us' || 'Connect with Us' });
 
         this.locNavMenuHomePage = this.page.locator("//div[@class='navigation']/ul/li/a/span");
         this.locNavMenuXPage = this.page.locator("//div[@class='navigation page-navigation']/nav/ul/li/a/div/span[@class='menu-item-title']");
@@ -71,20 +71,24 @@ class Util {
             navSubMenu = this.navSubMenuXPage;
         }
 
-        // get lements from navigation menu
+        // get elements from navigation menu
         const navMenuList = await locatorNavMenu.all();
         for (let i = 0; i < navMenuList.length; i++) {
             const navSubMenuList = await this.page.locator(navSubMenu.replace('{n}', i + 1)).all();
             if (navSubMenuList.length > 0) {
-                if (navMenuDict[keys[i]]['subMenuList'] === undefined) {
-                    /// the error will be thrown when the sub menu is added to main menu
+                if (!'subMenu' in navMenuDict[keys[i]]) {
+                    // the error will be thrown when the sub menu is added to main menu
                     throw new Error("New sub menu list added on menu with title: ", navMenuDict[keys[i]]['name']);
-                }
-            }
-            if ('subMenuList' in navMenuDict[keys[i]] &&
-                navSubMenuList.length == navMenuDict[keys[i]]['subMenuList'].length) {
-                for (let j = 0; j < navSubMenuList.length; j++) {
-                    await expect(navSubMenuList[j]).toHaveText(navMenuDict[keys[i]]['subMenuList'][j]['name']);
+                } else {
+                    const subMenuKeys = Object.keys(navMenuDict[keys[i]]['subMenu']);
+                    if (navSubMenuList.length == subMenuKeys.length) {
+                        for (let j = 0; j < navSubMenuList.length; j++) {
+                            await expect(navSubMenuList[j]).toHaveText(navMenuDict[keys[i]]['subMenu'][subMenuKeys[j]]['name']);
+                        }
+                    } else {
+                        // the error will be thrown when the sub menu is added to main menu
+                        throw new Error("New sub menu items added/removed on menu with title: ", navMenuDict[keys[i]]['name']);
+                    }
                 }
             }
         }
@@ -126,7 +130,7 @@ class Util {
         await this.locBrandImg.click();
     }
 
-    async validateSocialMedia(){
+    async validateSocialMedia() {
         for (let key of Object.entries(socialLinks)) {
             key = key[1];
             const link = await this.page.getByLabel(key['label']).getAttribute("href");
@@ -138,9 +142,9 @@ class Util {
                 throw new Error("Social link will open in current tab only for: ", key['label']);
             }
         }
-    } 
+    }
 
-    async validatePrivacyPolicy(){
+    async validatePrivacyPolicy() {
         await expect(this.locFtPrivacyPolicy).toBeVisible();
 
         const link = await this.locFtPrivacyPolicy.getAttribute("href");
@@ -151,12 +155,41 @@ class Util {
         }
     }
 
-
-
-    async navigateThroughNavMenu() {
-
+    /**
+     * @param {{}} menu
+     * {
+            "mainMenu" : {
+                "name" : "",
+                "action" : "c/h",
+            },
+            "subMenu" : {
+                "name" : "",
+                "action" : "c/h",
+            }, //optional
+            "nestMenu" : {
+                "name" : "",
+            }, //optional
+        }
+     */
+    async navigateThroughNavMenu(menu) {
+        if ('mainMenu' in menu) {
+            if (menu['mainMenu']['action'] == 'c') {
+                await this.page.getByRole('banner', { name: menu['mainMenu']['name'], exact: true }).click();
+            } else {
+                await this.page.getByRole('banner', { name: menu['mainMenu']['name'], exact: true }).hover();
+            }
+            if ('subMenu' in menu) {
+                if (menu['subMenu']['action'] == 'c') {
+                    await this.page.getByRole('banner', { name: menu['subMenu']['name'], exact: true }).click();
+                } else {
+                    await this.page.getByRole('banner', { name: menu['subMenu']['name'], exact: true }).hover();
+                }
+                if ('nestMenu' in menu) {
+                    await this.page.getByRole('banner', { name: menu['nestMenu']['name'], exact: true }).click();
+                }
+            }
+        }
     }
-
 
 }
 

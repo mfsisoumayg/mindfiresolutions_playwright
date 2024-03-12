@@ -1,7 +1,7 @@
 const navMenuDict = {
     "aboutUs": {
         "name": "About Us",
-        "subMenuDict": {
+        "subMenu": {
             "whatWeDo" : {
                 "name": "Who Do We Serve",
                 "link": "/who-do-we-serve/"
@@ -30,41 +30,11 @@ const navMenuDict = {
                 "name": "Service Models",
                 "link": "/engagement-and-pricing-models/"
             }
-        },
-        "subMenuList": [
-            {
-                "name": "Who Do We Serve",
-                "link": "/who-do-we-serve/"
-            },
-            {
-                "name": "Leadership",
-                "link": "/leadership/"
-            },
-            {
-                "name": "Recognition",
-                "link": "/recognition/"
-            },
-            {
-                "name": "Partnerships",
-                "link": "/partnerships/"
-            },
-            {
-                "name": "News",
-                "link": "/news/"
-            },
-            {
-                "name": "Policies",
-                "link": "/policies/"
-            },
-            {
-                "name": "Service Models",
-                "link": "/engagement-and-pricing-models/"
-            },
-        ]
+        }
     },
     "services": {
         "name": "Services",
-        "subMenuDict": {
+        "subMenu": {
             "customSd": {
                 "name": "Custom Software Development",
                 "link": "/custom-software-development/"
@@ -89,37 +59,11 @@ const navMenuDict = {
                 "name": "Maintenance & Support",
                 "link": "/maintenance-and-support/"
             },
-        },
-        "subMenuList": [
-            {
-                "name": "Custom Software Development",
-                "link": "/custom-software-development/"
-            },
-            {
-                "name": "QA & Testing",
-                "link": "/qa-and-testing/"
-            },
-            {
-                "name": "Technology Trends",
-                "link": "/#"
-            },
-            {
-                "name": "3rd Party Platform Integration",
-                "link": "/3rd-party-platform-integration/"
-            },
-            {
-                "name": "Migration and Modernization",
-                "link": "/migration-and-modernization/"
-            },
-            {
-                "name": "Maintenance & Support",
-                "link": "/maintenance-and-support/"
-            },
-        ]
+        }
     },
     "industries": {
         "name": "Industries",
-        "subMenuDict": {
+        "subMenu": {
             "healthcare": {
                 "name": "Healthcare",
                 "link": "/healthcare/"
@@ -144,33 +88,7 @@ const navMenuDict = {
                 "name": "Financial & Information Services",
                 "link": "/financial-and-information-services/"
             }
-        },
-        "subMenuList": [
-            {
-                "name": "Healthcare",
-                "link": "/healthcare/"
-            },
-            {
-                "name": "Publishing",
-                "link": "/publishing/"
-            },
-            {
-                "name": "Retail/e-Commerce",
-                "link": "/retail-ecommerce/"
-            },
-            {
-                "name": "Education & e-Learning",
-                "link": "/education-and-elearning/"
-            },
-            {
-                "name": "Transportation & Logistics",
-                "link": "/transportation-and-logistics/"
-            },
-            {
-                "name": "Financial & Information Services",
-                "link": "/financial-and-information-services/"
-            }
-        ]
+        }
     },
     "knowledge": {
         "name": "Knowledge",
@@ -178,7 +96,7 @@ const navMenuDict = {
     },
     "portfolio": {
         "name": "Portfolio",
-        "subMenuDict": {
+        "subMenu": {
             "caseStudies": {
                 "name": "Case Studies",
                 "link": "/portfolio/case-studies/"
@@ -203,37 +121,11 @@ const navMenuDict = {
                 "name": "Our Clients",
                 "link": "/portfolio/our-clients/"
             }
-        },
-        "subMenuList": [
-            {
-                "name": "Case Studies",
-                "link": "/portfolio/case-studies/"
-            },
-            {
-                "name": "Projects",
-                "link": "/portfolio/projects/"
-            },
-            {
-                "name": "Success Stories",
-                "link": "/portfolio/success-stories/"
-            },
-            {
-                "name": "Infographics",
-                "link": "/portfolio/infographics/"
-            },
-            {
-                "name": "Client Testimonial",
-                "link": "/portfolio/client-testimonial/"
-            },
-            {
-                "name": "Our Clients",
-                "link": "/portfolio/our-clients/"
-            }
-        ]
+        }
     },
     "people": {
         "name": "People",
-        "subMenuDict": {
+        "subMenu": {
             "culture": {
                 "name": "Culture",
                 "link": "/people/culture/"
@@ -246,21 +138,7 @@ const navMenuDict = {
                 "name": "People Speak",
                 "link": "/people/people-speak/"
             }
-        },
-        "subMenuList": [
-            {
-                "name": "Culture",
-                "link": "/people/culture/"
-            },
-            {
-                "name": "Career",
-                "link": "/people/career/"
-            },
-            {
-                "name": "People Speak",
-                "link": "/people/people-speak/"
-            }
-        ]
+        }
     },
     "contactUs": {
         "name": "Contact Us",
