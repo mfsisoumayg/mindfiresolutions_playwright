@@ -38,7 +38,7 @@ test.describe('knowledge page functionality', () => {
         const knowledge = new KnowledgePage(page);
         await knowledge.goTo();
 
-        await knowledge.util.validateBannerConnectWithUs();
+        await knowledge.util.validateFooterTopBanner();
 
     });
 

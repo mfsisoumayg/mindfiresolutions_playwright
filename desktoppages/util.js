@@ -24,6 +24,8 @@ class Util {
         this.locSearchBar = this.page.getByPlaceholder('Enter search keyword…').last();
         this.locSearchEnterBtn = this.page.getByRole('button', { class: 'search-submit' }).last();
 
+        this.footerTopBannerConnect = this.page.locator("section:last-of-type div div div .wpb_wrapper");
+
         this.locFtPrivacyPolicy = this.page.getByRole('link', { name: privacyPolicy.label })
     }
 
@@ -119,7 +121,7 @@ class Util {
     /**
      * @param {boolean} click
      */
-    async validateBannerConnectWithUs(click) {
+    async validateConnectWithUsLink(click) {
         await expect(this.locConnectBtn).toBeVisible();
         if (click) {
             await this.locConnectBtn.click();
@@ -189,6 +191,12 @@ class Util {
                 }
             }
         }
+    }
+
+    async validateFooterTopBanner() {
+        await expect(this.footerTopBannerConnect).toContainText("Igniting Ideas To Solutions");
+        await expect(this.footerTopBannerConnect).toContainText("Connect with Us" || "Connect With Us");
+        await this.validateConnectWithUsLink();
     }
 
 }
