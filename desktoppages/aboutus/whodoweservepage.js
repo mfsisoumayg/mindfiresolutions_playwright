@@ -26,7 +26,7 @@ class WhoDoWeServePage {
 
     async validateArticlesHeadings() {
         let locArticles = this.page.locator(this.articlesXpath);
-        await expect(locArticles).toHaveCount(Object.values(articles).length);
+        await expect(locArticles).toHaveCount(Object.keys(articles).length);
 
         locArticles = await locArticles.all();
         const articleKeys = Object.keys(articles);

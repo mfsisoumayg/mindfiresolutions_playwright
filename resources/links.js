@@ -7,11 +7,12 @@ const whitepaperUrl = "https://www.mindfiresolutions.com/knowledge/whitepaper/";
 
 // under about us tab
 const aboutUsWhoDoWeServeUrl = "https://www.mindfiresolutions.com/who-do-we-serve/";
+const aboutUsLeadershipUrl = "https://www.mindfiresolutions.com/leadership/";
 
 export {baseUrl};
 export {searchResultsUrl};
 export {contactUsUrl, knowledgeUrl};
 export {whitepaperUrl}; // under knowledge tab
-export {aboutUsWhoDoWeServeUrl}; // under about us tab
+export {aboutUsWhoDoWeServeUrl, aboutUsLeadershipUrl}; // under about us tab
 
 

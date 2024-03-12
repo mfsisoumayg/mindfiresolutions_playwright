@@ -132,8 +132,8 @@ class Util {
     async validateSocialMedia() {
         for (let key of Object.entries(socialLinks)) {
             key = key[1];
-            const link = await this.page.getByLabel(key['label']).getAttribute("href");
-            const target = await this.page.getByLabel(key['label']).getAttribute("target")
+            const link = await this.page.getByLabel(key['label']).last().getAttribute("href");
+            const target = await this.page.getByLabel(key['label']).last().getAttribute("target")
             if (link !== key['link']) {
                 throw new Error("Link not matching for: ", key['label']);
             }
