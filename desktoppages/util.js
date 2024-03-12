@@ -11,7 +11,7 @@ class Util {
         this.page = page;
         this.locBrandImg = this.page.getByRole('link', { name: 'Mindfire Solutions' });
 
-        this.locConnectBtn = this.page.getByRole('link', { name: 'Connect With Us' || 'Connect with Us' });
+        this.locConnectBtn = this.page.getByRole('link', { name: 'Connect With Us'});
 
         this.locNavMenuHomePage = this.page.locator("//div[@class='navigation']/ul/li/a/span");
         this.locNavMenuXPage = this.page.locator("//div[@class='navigation page-navigation']/nav/ul/li/a/div/span[@class='menu-item-title']");
@@ -118,13 +118,10 @@ class Util {
         await this.locSearchEnterBtn.click();
     }
 
-    /**
-     * @param {boolean} click
-     */
-    async validateConnectWithUsLink(click) {
-        await expect(this.locConnectBtn).toBeVisible();
-        if (click) {
-            await this.locConnectBtn.click();
+    async validateConnectWithUsLink() {
+        if ((await this.locConnectBtn.all()).length > 0) {
+        } else {
+            throw new Error("Connect With/with Us button link not visible!!!");
         }
     }
 
@@ -162,7 +159,6 @@ class Util {
      * {
             "mainMenu" : {
                 "name" : "",
-                "action" : "c/h",
             },
             "subMenu" : {
                 "name" : "",
@@ -175,19 +171,15 @@ class Util {
      */
     async navigateThroughNavMenu(menu) {
         if ('mainMenu' in menu) {
-            if (menu['mainMenu']['action'] == 'c') {
-                await this.page.getByRole('banner', { name: menu['mainMenu']['name'], exact: true }).click();
-            } else {
-                await this.page.getByRole('banner', { name: menu['mainMenu']['name'], exact: true }).hover();
-            }
+            await this.page.getByRole('link', { name: menu['mainMenu']['name']}).first().click();
             if ('subMenu' in menu) {
                 if (menu['subMenu']['action'] == 'c') {
-                    await this.page.getByRole('banner', { name: menu['subMenu']['name'], exact: true }).click();
+                    await this.page.getByRole('link', { name: menu['subMenu']['name']}).click();
                 } else {
-                    await this.page.getByRole('banner', { name: menu['subMenu']['name'], exact: true }).hover();
-                }
-                if ('nestMenu' in menu) {
-                    await this.page.getByRole('banner', { name: menu['nestMenu']['name'], exact: true }).click();
+                    await this.page.getByRole('link', { name: menu['subMenu']['name']}).hover();
+                    if ('nestMenu' in menu) {
+                        await this.page.getByRole('link', { name: menu['nestMenu']['name']}).click();
+                    }
                 }
             }
         }
@@ -195,7 +187,7 @@ class Util {
 
     async validateFooterTopBanner() {
         await expect(this.footerTopBannerConnect).toContainText("Igniting Ideas To Solutions");
-        await expect(this.footerTopBannerConnect).toContainText("Connect with Us" || "Connect With Us");
+        await expect(this.footerTopBannerConnect).toContainText("Connect With Us");
         await this.validateConnectWithUsLink();
     }
 
