@@ -10,7 +10,7 @@ class LeadershipPage {
     constructor(page) {
         this.page = page;
         this.util = new Util(page);
-        this.leadersXpath = "div.vc_row-outer div.wpb_column div.tm-heading h3";
+        this.locLeaders = this.page.locator("div.vc_row-outer div.wpb_column div.tm-heading h3");
     }
 
     async goTo() {
@@ -27,14 +27,12 @@ class LeadershipPage {
     }
 
     async validateLeadersName() {
-        let locLeaders = this.page.locator(this.leadersXpath);
-        await expect(locLeaders).toHaveCount(Object.keys(leaders).length);
+        await expect(this.locLeaders).toHaveCount(Object.keys(leaders).length);
 
-        locLeaders = await locLeaders.all();
+        let locs = await locLeaders.all();
         const leaderKeys = Object.keys(leaders);
-        
-        for (let i = 0; i< locLeaders.length; i++) {
-            await expect(locLeaders[i]).toHaveText(leaders[leaderKeys[i]]);
+        for (let i = 0; i< locs.length; i++) {
+            await expect(locs[i]).toHaveText(leaders[leaderKeys[i]]);
         }
     }
 }

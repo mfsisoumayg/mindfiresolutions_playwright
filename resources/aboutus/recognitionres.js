@@ -1,0 +1,28 @@
+const achievements = [
+    "Deloitte Technology Fast 50 India 2023",
+    "INDIA 500 MOST PROMISING IT COMPANY 2023",
+    "Indian Achievers' Award for Promising MSME, 2023-24",
+    "STPI Exports & Excellence Awards 2021-22",
+    "Deloitte Technology Fast 500 Asia Pacific 2014",
+    "Zinnov Award – Enterprise Software development category",
+    "Deloitte Technology Fast50 India 2014",
+    "Deloitte Technology Fast50 India 2013",
+    "D&B Fastest Growing SME India 2013",
+    "Technology Sabha, India’s Leading E-governance Summit 2020",
+    "Zinnov Award – ISV Category",
+    "Odisha Citizens Award",
+    "ASCI Accreditation",
+    "STPI Accreditation",
+    "2012 Red Herring Top 100 Asia",
+    "Best IT Unit 2008 (SME) Award",
+    "Small Business Specialist",
+    "USPTO Patent #6,904,560",
+    "NASSCOM membership",
+    "STPI's Advantage Odisha 2015 Glory of Odisha Award",
+    "ECGC - D&B Indian Exporters’ Excellence Awards 2015",
+    "Think Odisha Leadership Award 2015",
+    "Infocom Advantage Odisha 2017 STPI Exports Award",
+    "Top25 QA Testing Company",
+]
+
+export {achievements}

@@ -3,6 +3,7 @@ const { test, expect } = require('@playwright/test');
 import HomePage from "../desktoppages/home_page";
 import WhoDoWeServePage from '../desktoppages/aboutus/whodoweservepage';
 import LeadershipPage from '../desktoppages/aboutus/leadershipage';
+import RecognitionPage from '../desktoppages/aboutus/recognitionpage';
 import {navMenuDict} from "../resources/headersres";
 
 test.describe('about us - who do we serve', () => {
@@ -112,6 +113,59 @@ test.describe('about us - leadership', () => {
     
         await leadership.util.validatePrivacyPolicy();
         await leadership.util.validateSocialMedia();
+    
+        page.close();
+      });
+
+});
+
+test.describe('about us - recognition', () => {
+
+    test('start from homepage', async ({page}) => {
+        const homePage = new HomePage(page);
+        await homePage.goTo();
+
+        await homePage.util.navigateThroughNavMenu(
+            {
+                "mainMenu" : {
+                    "name" : navMenuDict.aboutUs.name,
+                },
+                "subMenu" : {
+                    "name" : navMenuDict.aboutUs.subMenu.recognition.name,
+                    "action" : "c",
+                },
+            }
+        );
+
+        const recognition = new RecognitionPage(page);
+        await recognition.validateUrl();
+    });
+
+    test('headers', async ({ page }) => {
+        const recognition = new RecognitionPage(page);
+        await recognition.goTo();
+
+        await recognition.util.validateNavMenu();
+        await recognition.util.validateNavSubMenu();
+
+        await recognition.util.validateSearchMenu();
+
+    });
+
+    test('articles', async ({ page }) => {
+        const recognition = new RecognitionPage(page);
+        await recognition.goTo();
+
+        await recognition.validatePageBanner();
+        await recognition.validateAchievements();
+    });
+
+    test('footers', async ({ page }) => {
+        const recognition = new RecognitionPage(page);
+        await recognition.goTo();
+    
+        await recognition.util.validatePrivacyPolicy();
+        await recognition.util.validateSocialMedia();
     
         page.close();
       });
