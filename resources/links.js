@@ -9,11 +9,15 @@ const whitepaperUrl = "https://www.mindfiresolutions.com/knowledge/whitepaper/";
 const aboutUsWhoDoWeServeUrl = "https://www.mindfiresolutions.com/who-do-we-serve/";
 const aboutUsLeadershipUrl = "https://www.mindfiresolutions.com/leadership/";
 const aboutUsRecognitionUrl = "https://www.mindfiresolutions.com/recognition/";
+const aboutUsPartnershipsUrl = "https://www.mindfiresolutions.com/partnerships/";
 
 export {baseUrl};
 export {searchResultsUrl};
+// under nav menu (header)
 export {contactUsUrl, knowledgeUrl};
-export {whitepaperUrl}; // under knowledge tab
-export {aboutUsWhoDoWeServeUrl, aboutUsLeadershipUrl, aboutUsRecognitionUrl}; // under about us tab
-
+// under knowledge tab
+export {whitepaperUrl}; 
+// under about us tab
+export {aboutUsWhoDoWeServeUrl, aboutUsLeadershipUrl, aboutUsRecognitionUrl};
+export {aboutUsPartnershipsUrl}; 
 

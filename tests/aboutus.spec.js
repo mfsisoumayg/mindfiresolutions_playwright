@@ -4,6 +4,7 @@ import HomePage from "../desktoppages/home_page";
 import WhoDoWeServePage from '../desktoppages/aboutus/whodoweservepage';
 import LeadershipPage from '../desktoppages/aboutus/leadershipage';
 import RecognitionPage from '../desktoppages/aboutus/recognitionpage';
+import PartnershipsPage from "../desktoppages/aboutus/partnershipspage";
 import {navMenuDict} from "../resources/headersres";
 
 test.describe('about us - who do we serve', () => {
@@ -166,6 +167,59 @@ test.describe('about us - recognition', () => {
     
         await recognition.util.validatePrivacyPolicy();
         await recognition.util.validateSocialMedia();
+    
+        page.close();
+      });
+
+});
+
+test.describe('about us - partnerships', () => {
+
+    test('start from homepage', async ({page}) => {
+        const homePage = new HomePage(page);
+        await homePage.goTo();
+
+        await homePage.util.navigateThroughNavMenu(
+            {
+                "mainMenu" : {
+                    "name" : navMenuDict.aboutUs.name,
+                },
+                "subMenu" : {
+                    "name" : navMenuDict.aboutUs.subMenu.partnerships.name,
+                    "action" : "c",
+                },
+            }
+        );
+
+        const partnerships = new PartnershipsPage(page);
+        await partnerships.validateUrl();
+    });
+
+    test('headers', async ({ page }) => {
+        const partnerships = new PartnershipsPage(page);
+        await partnerships.goTo();
+
+        await partnerships.util.validateNavMenu();
+        await partnerships.util.validateNavSubMenu();
+
+        await partnerships.util.validateSearchMenu();
+
+    });
+
+    test('articles', async ({ page }) => {
+        const partnerships = new PartnershipsPage(page);
+        await partnerships.goTo();
+
+        await partnerships.validatePageBanner();
+        await partnerships.validatePartners();
+    });
+
+    test('footers', async ({ page }) => {
+        const partnerships = new PartnershipsPage(page);
+        await partnerships.goTo();
+    
+        await partnerships.util.validatePrivacyPolicy();
+        await partnerships.util.validateSocialMedia();
     
         page.close();
       });
