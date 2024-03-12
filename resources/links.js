@@ -10,6 +10,7 @@ const aboutUsWhoDoWeServeUrl = "https://www.mindfiresolutions.com/who-do-we-serv
 const aboutUsLeadershipUrl = "https://www.mindfiresolutions.com/leadership/";
 const aboutUsRecognitionUrl = "https://www.mindfiresolutions.com/recognition/";
 const aboutUsPartnershipsUrl = "https://www.mindfiresolutions.com/partnerships/";
+const aboutUsPoliciesUrl = "https://www.mindfiresolutions.com/policies/";
 
 export {baseUrl};
 export {searchResultsUrl};
@@ -19,5 +20,5 @@ export {contactUsUrl, knowledgeUrl};
 export {whitepaperUrl}; 
 // under about us tab
 export {aboutUsWhoDoWeServeUrl, aboutUsLeadershipUrl, aboutUsRecognitionUrl};
-export {aboutUsPartnershipsUrl}; 
+export {aboutUsPartnershipsUrl, aboutUsPoliciesUrl}; 
 

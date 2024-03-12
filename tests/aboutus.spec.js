@@ -5,6 +5,7 @@ import WhoDoWeServePage from '../desktoppages/aboutus/whodoweservepage';
 import LeadershipPage from '../desktoppages/aboutus/leadershipage';
 import RecognitionPage from '../desktoppages/aboutus/recognitionpage';
 import PartnershipsPage from "../desktoppages/aboutus/partnershipspage";
+import PoliciesPage from "../desktoppages/aboutus/policiespage";
 import {navMenuDict} from "../resources/headersres";
 
 test.describe('about us - who do we serve', () => {
@@ -220,6 +221,59 @@ test.describe('about us - partnerships', () => {
     
         await partnerships.util.validatePrivacyPolicy();
         await partnerships.util.validateSocialMedia();
+    
+        page.close();
+      });
+
+});
+
+test.describe('about us - policies', () => {
+
+    test('start from homepage', async ({page}) => {
+        const homePage = new HomePage(page);
+        await homePage.goTo();
+
+        await homePage.util.navigateThroughNavMenu(
+            {
+                "mainMenu" : {
+                    "name" : navMenuDict.aboutUs.name,
+                },
+                "subMenu" : {
+                    "name" : navMenuDict.aboutUs.subMenu.partnerships.name,
+                    "action" : "c",
+                },
+            }
+        );
+
+        const policies = new PoliciesPage(page);
+        await policies.validateUrl();
+    });
+
+    test('headers', async ({ page }) => {
+        const policies = new PoliciesPage(page);
+        await policies.goTo();
+
+        await policies.util.validateNavMenu();
+        await policies.util.validateNavSubMenu();
+
+        await policies.util.validateSearchMenu();
+
+    });
+
+    test('articles', async ({ page }) => {
+        const policies = new PoliciesPage(page);
+        await policies.goTo();
+
+        await policies.validatePageBanner();
+        await policies.validateTypesofAgreements();
+    });
+
+    test('footers', async ({ page }) => {
+        const policies = new PoliciesPage(page);
+        await policies.goTo();
+    
+        await policies.util.validatePrivacyPolicy();
+        await policies.util.validateSocialMedia();
     
         page.close();
       });
